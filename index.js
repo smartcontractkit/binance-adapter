@@ -9,6 +9,7 @@ const resolveSuccess = (id, result, callback) => {
 };
 
 const resolveError = (id, error, callback) => {
+	console.log("Error:", error)
 	callback(500, {
 		jobRunID: id,
 		status: "errored",
@@ -20,6 +21,7 @@ const resolveError = (id, error, callback) => {
 const createRequest = (input, callback) => {
 	const client = Binance();
 	const endpoint = input.data.endpoint || "ping";
+	const symbol = input.data.symbol || "ETHBTC";
 	switch (endpoint.toLowerCase()) {
 		case "ping":
 			client.ping().then(result => {
@@ -35,12 +37,13 @@ const createRequest = (input, callback) => {
 				resolveError(input.id, error, callback);
 			});
 		break;
-		case "exchangeinfo":
-				client.exchangeInfo().then(result => {
-					resolveSuccess(input.id, result, callback)
-				}).catch(error => {
-					resolveError(input.id, error, callback);
-				});
+		case "avgprice":
+			client.avgPrice({symbol: symbol}).then(result => {
+				resolveSuccess(input.id, result, callback)
+			}).catch(error => {
+				resolveError(input.id, error, callback);
+			});
+		break;
 		default:
 			break;
 	}

@@ -15,7 +15,7 @@ describe("createRequest", () => {
 				assert.equal(statusCode, 200);
 				assert.equal(data.jobRunID, jobID);
 				assert.isTrue(data.data);
-				console.log(JSON.stringify(data));
+				console.log(JSON.stringify(data, null, 1));
 				done();
 			});
 		});
@@ -34,17 +34,17 @@ describe("createRequest", () => {
 				assert.equal(statusCode, 200);
 				assert.equal(data.jobRunID, jobID);
 				assert.isNumber(data.data);
-				console.log(JSON.stringify(data));
+				console.log(JSON.stringify(data, null, 1));
 				done();
 			});
 		});
 	});
 
-	context("when using the exchangeInfo endpoint", () => {
+	context("when using the avgPrice endpoint", () => {
 		const req = {
 			id: jobID,
 			data: {
-				endpoint: "exchangeInfo"
+				endpoint: "avgPrice"
 			}
 		};
 
@@ -53,7 +53,7 @@ describe("createRequest", () => {
 				assert.equal(statusCode, 200);
 				assert.equal(data.jobRunID, jobID);
 				assert.isNotEmpty(data.data);
-				console.log(JSON.stringify(data));
+				console.log(JSON.stringify(data, null, 1));
 				done();
 			});
 		});
