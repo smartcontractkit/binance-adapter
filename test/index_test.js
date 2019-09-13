@@ -44,6 +44,7 @@ describe("createRequest", () => {
 		const req = {
 			id: jobID,
 			data: {
+				symbol: "BNBUSDT",
 				endpoint: "avgPrice"
 			}
 		};

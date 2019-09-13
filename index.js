@@ -21,7 +21,7 @@ const resolveError = (id, error, callback) => {
 const createRequest = (input, callback) => {
 	const client = Binance();
 	const endpoint = input.data.endpoint || "ping";
-	const symbol = input.data.symbol || "ETHBTC";
+	const symbol = input.data.symbol || "ETHUSDT";
 	switch (endpoint.toLowerCase()) {
 		case "ping":
 			client.ping().then(result => {
