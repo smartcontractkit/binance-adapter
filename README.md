@@ -2,6 +2,11 @@
 
 This external adapter uses the unauthenticated endpoints for connecting to the Binance Exchange API.
 
+## Input Params
+
+- `endpoint`: The endpoint of the API to query
+- `symbol`: The symbol to query. Will default to `"ETHUSDT"` if unspecified and required by the endpoint.
+
 ## Install
 
 ```bash
